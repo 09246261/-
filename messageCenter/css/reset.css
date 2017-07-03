@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/* CSS Document */
+body, html, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, input, p, blockquote, th, td {
+  margin: 0;
+  padding: 0; }
+
+body {
+  font: 14px/14px "宋体";
+  color: #323333;
+  background: #fff; }
+
+img {
+  border: 0; }
+
+i {
+  font-style: normal; }
+
+ol, ul {
+  list-style: none; }
+
+/*h1, h2, h3, h4, h5, h6{ font-size:100%; }*/
+em {
+  font-style: normal; }
+
+input, button, select, textarea {
+  outline: none; }
+
+textarea {
+  resize: none; }
+
+p {
+  text-align: justify; }
+
+a {
+  color: #323333;
+  text-decoration: none;
+  cursor: pointer; }
+
+a:hover {
+  text-decoration: none;
+  color: #323333; }
+
+.clearfix:after {
+  content: "";
+  /*里面可以为空、内容的意思*/
+  visibility: hidden;
+  /*隐藏*/
+  height: 0;
+  display: block;
+  clear: both;
+  overflow: hidden; }
+
+.clearfix {
+  zoom: 1;
+  /*这个转为解决IE6的bug的*/ }

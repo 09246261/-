@@ -1,0 +1,652 @@
+@import "mixin.scss";
+body,html
+{ 
+    min-height: 100%; 
+    background: transparent!important; 
+}
+ 
+//iframe
+//{
+//  width:100%;  
+//  box-sizing: border-box;
+//  border:none; 
+//  position: relative;  
+//  padding: 0;
+//  margin: 0;
+////  background: #efefef;
+//}
+//.ke-edit-iframe{background: #fff;}
+//.ke-statusbar{display: none;}
+//iframe.active{z-index: 2;}
+.datetimepicker table th.next i, .datetimepicker table th.prev i{height: 14px!important;}
+.wrapper
+{
+    min-height: 100%;
+    position: relative;
+    .main-sidebar
+    {
+        position: absolute;
+        top:0;
+        left: 0; 
+        min-height: 100%;
+        width: 250px;
+        border-right:1px solid #adadad;
+        padding-left: 7px;
+        z-index: 1;
+        background: #ececef; 
+        .sidebar-head
+        {
+            height: 80px;
+            font-size: 16px;
+            border-bottom:1px solid #adadad;
+            overflow: hidden;
+            color: #000;
+            h2
+            {
+                text-align: center; 
+                margin: 20px 0 15px;
+            } 
+            span
+            {
+                text-align: center;
+                display: block;
+                font-weight: bold;
+            }
+        }
+        .slidebar-menu
+        {
+            padding:0 7px;
+            li
+            {
+                margin-top:12px;
+                height: 50px;
+                line-height: 50px;
+                text-align: center; 
+                background: #fff;
+                a
+                {
+                    border:1px solid #ADADAD;
+                    display: block;
+                    font-size: 16px;
+                }
+                a.active
+                {
+                    background: #c0271e;
+                    color: #fff;
+                    border:none;
+                }
+            }
+        }
+    }  
+    .content-wrapper
+    {
+//      margin-left:250px; 
+        .tabHead
+        {
+            height: 80px;
+            line-height: 80px;
+            border-bottom: 1px solid #ADADAD;
+            padding-left: 50px;
+            a
+            {
+                display: inline-block;
+                width: 145px;
+                height: 36px;
+                line-height: 36px;
+                text-align: center;
+                @include border-radius(8px);
+                font-size: 20px; 
+                margin-right: 25px;
+                background: #fff;
+                color: #2f2f2f;
+                border:1px solid #d1d1d1;
+            }
+            a.active
+            {
+                background: #e03732;
+                color: #fff;
+                border:none;
+            }
+             
+        }
+        .tabContent
+        {
+            padding: 0 50px;
+           
+            .content
+            {
+                .contentHead
+                { 
+                    padding: 20px 0; 
+                    border-bottom: 1px solid #ADADAD; 
+                }
+                //启动图管理
+                .graphGroup{padding: 20px 0;}
+                //弹窗管理
+                .popGroup
+                {
+                    .top
+                    {
+                        padding: 20px 0;
+                        border-bottom: 1px solid #ADADAD;
+                        .uploadTip
+                        {
+                             float: left;
+                             margin-left:60px;
+                        } 
+                       .dropdown-wrapper
+                       {
+                           display: none;
+                           border: none;
+                       }
+                       .select2-selection__arrow
+                       {
+                           background: #fff;
+                           width: 40px;
+                           padding: 0;
+                           border: none;
+                           border-bottom: 1px solid #ADADAD;
+                       }
+                       .function,.triggerType
+                       {
+                           border: 1px solid #ADADAD;
+                       }
+                       .select2-selection__rendered,.select2-container--default .select2-selection--single,.select2-container,.selection
+                       {
+                           border: none;
+                           outline: none;
+                           background: #fff;
+                           padding: 0;
+                       } 
+                       
+                       
+                    }
+                    .bottom
+                    {
+                        padding: 20px 0;
+                        img
+                        {
+                            position: absolute;
+                            bottom: -22px;
+                            left: 25px; 
+                        }
+                        .oneButton,.leftBtn,.rigthBtn
+                        {
+                            width:$width; 
+                            padding: 10px;
+                            border:1px dotted #ADADAD;
+                            margin-left: -10px;
+                            margin-bottom: 15px; 
+                        } 
+                    } 
+                    
+                }
+                //系统通知
+                .messageNotificy
+                {
+                    padding: 20px 0;    
+                    .btn-box
+                    {
+                        width: 300px;
+                        margin:0 auto;
+                        button
+                        {
+                            width: 60px;
+                        }
+                        .cancel,.save
+                        {
+                            display: none;
+                        }
+                    }                  
+                    //推送设置
+                    .pushSet
+                    {
+                        label
+                        {
+                            margin:0;
+                            font-weight: normal;
+                            height: 35px;
+                            line-height: 35px;
+                            input
+                            { 
+                                width: 20px;
+                                height: 20px;
+                                border: 1px solid #ADADAD;
+                                vertical-align: -6px;
+                                margin-right: 5px;
+                                margin-left: 15px;
+                            }
+                        }
+                        .pushBox
+                        {
+                            border:1px dotted #ADADAD;
+                            position: relative;
+                            display: none;
+                            img
+                            {
+                                position: absolute;
+                                top:-20px;
+                                left: 25px;
+                            }
+                            textarea
+                            {
+                                border:none;
+                                background: #fff;
+                                width: 100%;
+                                height: 100px;
+                                padding: 15px;
+                                display: none;
+                            }
+                            .areabox
+                            {
+                                padding: 15px;
+                                display: none; 
+                                .areaAdd,.areaItem
+                                {
+                                    padding: 5px 20px;
+                                    border:1px solid #e63047; 
+                                    background: #fff;
+                                    @include border-radius(5px);
+                                    float: left;
+                                    cursor: pointer;
+                                    font-size: 30px;
+                                }
+                                button
+                                {
+                                    height: 26px;
+                                    padding:0 20px; 
+                                    line-height:16px;
+                                }
+                                .areaItem
+                                {
+                                    padding: 5px 15px;
+                                    margin-right: 25px;
+                                    border:1px solid #ADADAD;
+                                    position: relative;
+                                    font-size: 14px;
+                                    span
+                                    {
+                                        position: absolute;
+                                        right: -7px;
+                                        top:-7px;
+                                        width: 15px;
+                                        height: 15px;
+                                        text-align: center;
+                                        line-height: 15px;
+                                        color: #E0690C;
+                                        border: 1px solid #E0690C;
+                                        @include border-radius(3px);
+                                        cursor: pointer;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //推送内容
+                    .pushContent
+                    {
+                        padding-top: 20px;
+                        border-top: 1px solid #ADADAD;
+                        .group
+                        {
+                            float: none;
+                            .pushDes
+                            {  
+                                border-right: 1px solid #ADADAD;
+                                border-bottom: none; 
+                            }
+                            input
+                            {
+                                width:calc(100% - 92px);
+                            }
+                        } 
+                        textarea
+                        {
+                            width: $width;
+                            height: 100px;
+                            padding: 10px;
+                        }
+                    }
+                }
+                //自动推送
+                .template
+                {
+                    padding-top:25px;
+                    .tokenCode
+                    {
+                        float: left;
+                        width: 365px;
+                        height: 35px;
+                        line-height: 35px;
+                        border-left: 1px solid #ADADAD;
+                        padding-left: 10px;
+                    }
+                    a
+                    {
+                        display: block;
+                        height: 100%;
+                        line-height: 35px;
+                        text-align: center;
+                        width: 300px;
+                        background: #eee;
+                        border: 1px solid #ADADAD;
+                    }
+                    button{display: block;margin:50px auto;}
+                    .triggerEvent
+                    {
+                        
+                        span
+                        {  
+                            width: 120px;
+                            border-right: 1px solid #ADADAD;
+                            border-bottom: none; 
+                        } 
+                       
+                        textarea
+                        {
+                            width: $width;
+                            height: 100px;
+                            padding: 10px;
+                        }
+                    }
+                }
+                //意见反馈
+                .feedBack
+                {
+                    padding-top: 25px;
+                    button
+                    {
+                        display: block;
+                        margin:0 auto;
+                    }
+                    .feedSet
+                    {
+                        border-bottom:1px solid #ADADAD;
+                        .contactWay
+                        {
+                            width: 872px;
+                        }
+                        .active
+                        {
+                            width:180px;
+                            float:left;
+                        }
+                    }
+                    .feedContent
+                    {
+                        padding-top: 25px;
+                        .group
+                        {
+                            float: none;
+                            span
+                            {
+                                border-right:1px solid #ADADAD; 
+                            } 
+                            strong
+                            {
+                                font-weight: normal;
+                                margin-left: 10px;
+                                display: block;
+                                float: left;
+                                height: $height;
+                                line-height: 35px;
+                                color: #ADADAD;
+                            }
+                        }
+                        textarea
+                        { 
+                            width: $width;
+                            height: 100px;
+                            padding: 10px;
+                            margin-top:-1px;
+                        }
+                        .feedbackImg
+                        {
+                            margin-top:10px;
+                            img
+                            {
+                                display: block;
+                                float: left; 
+                                width: 100px;
+                                height: 100px;
+                                border:1px solid #ADADAD;
+                                margin-right: 20px;
+                            } 
+                        }
+                    }
+                }
+                //版本介绍
+                .version
+                {
+                    .versionSet
+                    {
+                        padding-top: 25px;
+                        border-bottom: 1px solid #ADADAD;
+                    }
+                    .versionDetail
+                    {
+                        padding-top: 25px; 
+                        .versionDes
+                        {
+                            border-right: 1px solid #ADADAD;
+                            border-bottom: none;
+                        }
+                    }
+                    .btn-box
+                    {
+                        width: 200px;
+                        margin:0 auto;
+                        button
+                        {
+                            width: 60px;
+                        }
+                    }
+                }
+                .groupItem
+                {
+                    margin-bottom:25px;
+                } 
+                .group
+                { 
+                    height: 35px;  
+                    font-size:14px;  
+                    float: left; 
+                    height: 35px; 
+                    margin-right: 60px; 
+                    span
+                    {
+                        border:1px solid #ADADAD;
+                        border-right: 0;
+                        display: inline-block;
+                        height: $height;
+                        padding:0 10px;
+                        width: 92px;
+                        text-align: center;
+                        line-height: 35px;
+                        background: #eee;
+                        color: #555;
+                        float: left;
+                    }
+                    span:nth-of-type(2)
+                    {
+                        border-left: none;
+                        border-right:1px solid #ADADAD;
+                        cursor: pointer;
+                    }
+                    .eventDes{border-right: 1px solid #ADADAD;}
+                    .desContent{border:none!important; background: none;min-width: 360px;}
+                    select 
+                    { 
+                        border:1px solid #ADADAD;
+                        height: $height;
+                        line-height: 35px;  
+                        padding-left: 5px; 
+                        font-size:18px;  
+                        width:180px; 
+                        float: left;
+                    } 
+                    select.active,input
+                    {
+                        width: 360px;
+                        padding-left: 10px;
+                        height: $height;
+                    } 
+                    #token{width: 280px;}
+                    .uploadWrap
+                    {
+                        float: left;
+                        width: 268px;
+                        height: $height;
+                        background: #fff;
+                        border:1px solid #ADADAD;
+                        position: relative;
+                        input
+                        {
+                            position: absolute;
+                            top:0;
+                            left: 0;
+                            width: $width;
+                            height: $height;
+                            z-index: -1;
+                        }
+                        label
+                        {
+                            display: block;
+                            width: $width;
+                            height: $height;
+                            line-height: 35px;
+                            text-align: center;
+                            font-weight: normal;
+                            color: #999;
+                            margin-bottom: 0;
+                        } 
+                    }
+                    .uploadTip,.btnTip
+                    {
+                        float: left;
+                        margin-left: 60px;
+                        height: 100%;
+                        line-height: 35px;
+                    } 
+                } 
+                button
+                {   
+                    outline: none;   
+                    height: 35px;
+                    background: #fff;
+                    border:1px solid #ADADAD;
+                    @include border-radius(8px);
+                }
+                button.active
+                {
+                    margin:100px auto 50px; 
+                    height: 40px; 
+                    width:150px;
+                }
+                .btn-group
+                {
+                    width: 320px;
+                    margin:0 auto;
+                   
+                }
+                .contentList
+                {
+                    margin-top:20px; 
+                    table
+                    {
+                        width: $width;
+                        border-spacing: 0;
+                        border-collapse: collapse;
+                        text-align: center;
+                        background: #fff;
+                        thead th
+                        {
+                            color: #000; 
+                            font-weight: normal;
+                            border:1px solid #ADADAD;
+                            height: 35px;
+                            text-align: center;
+                            background: #d1ced0;
+                        } 
+                        td 
+                        {
+                             border:1px solid #ADADAD;
+                             padding: 4px 0;
+                             word-break: break-word;
+                             text-align: center;
+                             a
+                             {
+                                 display: inline-block;
+                                 padding: 6px 15px;
+                                 color: #fff;
+                                 margin-right: 10px;
+                             } 
+                             .detail
+                             {
+                                 background: #3ae032;
+                             }
+                             .edit 
+                             {
+                                 background: #1777c3;
+                             }
+                             .del 
+                             {
+                                 background: #eb224e;
+                             }
+                             .revoke
+                             {
+                                 background: #f08118;
+                             }
+                             .release
+                             {
+                                 background: #67ba52;
+                             }
+                             .preview
+                             {
+                                 background: #32e0c9;
+                             }
+                              
+                        } 
+                        
+                    }
+                     .pageBox
+                    {
+                        padding-top: 25px;  
+                        .page
+                        {
+                            float: right; 
+                            height: 30px; 
+                            a
+                            {
+                                margin: 0 8px; 
+                                width:18px;
+                                display: inline-block; 
+                                color: #323333;
+                            } 
+                            #prev,#next,.box
+                            { 
+                                display: inline-block;
+                                height: 18px;
+                                line-height: 18px;
+                                text-align: center;
+                            }  
+                            a.active
+                            { 
+                                border-radius: 50%;
+                                background: #e03732;
+                                color: #fff;
+                            } 
+                            #prev,#next{color: #e03732; font-weight: bold;}  
+                            #prev.bg,#next.bg
+                            {  
+                                color: #323333;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+   
+    
+}

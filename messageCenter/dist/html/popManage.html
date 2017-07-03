@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹窗管理</title>
+		<link rel="stylesheet" type="text/css" href="../css/amazeui.min.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/select2.min.css"/> 
+	</head>
+	<body>
+		<div class="wrapper"> 
+			<!--content wrapper-->
+			<div class="content-wrapper">
+				<!--tab head-->
+				<div class="tabHead">
+					<a class="active">弹窗列表</a>
+			 	 	<a class="create">新建弹窗</a>
+				</div>
+				<!--tab content-->
+				<div class="tabContent">
+					<!--弹窗列表-->
+					<div class="content" >
+						<!--查询条件-->
+						<div class="contentHead clearfix">
+							<div class="group">
+							    <span>所属模块</span> 
+							    <select class="business business1"></select>
+							    <select class="module module1"></select>
+							</div> 
+							<div class="group">
+								<span>按钮</span>
+								<select class="button_num">
+								  	<option value="">全部</option> 
+								  	<option value="1">1</option>
+								  	<option value="2">2</option>
+								</select> 
+							</div> 
+							<button type="button" class="am-btn am-radius query">查询</button>
+						</div>
+						<!--数据列表-->
+						<div class="contentList">
+							<table id="dataList">
+								<thead><th>编号</th><th>所属业务线</th><th>所属模块</th><th>弹窗名称</th><th>按钮</th><th>创建者</th><th>创建时间</th><th>操作</th></thead>
+								<tbody></tbody>
+							</table>
+							<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix"> 
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev"><</a> 
+									<div class="box"></div>  
+									<a id="next">></a></a>
+					 	 	 	</div>
+				 	 	 	</div> 
+						</div>
+					</div>
+					<!--新建弹窗-->
+					<div class="content"  style="display: none;"> 
+						<div class="popGroup">
+							<!--弹窗基本信息-->
+							<div class="top">
+								<div class="groupItem clearfix">
+									<div class="group">
+									    <span>所属模块</span>
+									    <select class="business business2"></select>
+									    <select class="module module2"></select>
+									</div>  
+									<div class="group">
+									    <span>名称</span>
+									    <input type="text" placeholder="请输入弹窗名称" class="popName"/> 
+									</div> 
+								</div>
+								<div class="groupItem clearfix">
+									<div class="group">
+									    <span>触发事件</span>
+									    <select class="active popupTrigger"></select> 
+									</div> 
+									<div class="group">
+									    <span class="eventDes">*事件说明</span>
+									    <span class="desContent"></span>
+									</div> 
+								</div>
+								<div class="groupItem clearfix">
+									<div class="group">
+									    <span>触发位置</span>
+									    <select class="active triggerPosition"> 
+									    	<option value="true">首页</option>
+									    	<option value="false">非首页</option>
+									    </select> 
+									</div>
+									<div class="group triggerType" style="display: none;"> 
+									    <select class="shopType" style="border: none; border-right: 1px solid #ADADAD;"> 
+									    	<option value="0">单店</option>
+									    	<option value="1">连锁</option>
+									    	<option value="2">分公司</option>
+									    </select>
+									    <select class="function"></select> 
+									</div> 
+								</div> 
+								<div class="groupItem clearfix">  
+									<div class="group">
+									    <span>弹窗图</span>
+									    <div class="uploadWrap"  style="width: 360px;">
+									    	<input type="file" id="uploadFile" />
+									        <label for="uploadFile" class="uploadFile">点击上传本地图片</label>
+									    </div>  
+									    <div class="uploadTip">
+			  							   *图片建议尺寸为287像素 *384像素，大小不能超过1M
+									    </div>
+									</div> 
+								</div> 
+							</div>
+							<!--弹窗按钮设置-->
+						    <div class="bottom"> 
+						    	<div class="groupItem clearfix">
+						    		<div class="group" style="position: relative;">
+									    <span>底部按钮</span>
+									    <select class="active bottombtnSelect">
+									  	    <option value="1">1个</option> 
+									  	    <option value="2">2个</option>
+									    </select>
+									    <div class="btnTip">
+			  							   *1个按钮会居中展示，2个按钮则以左右并排展示
+									    </div>
+									    <img src="../img/triangle.png" />
+									</div> 
+						    	</div>
+						    	<!--一个按钮-->
+								<div class="oneButton clearfix">
+									<div class="groupItem clearfix" style="margin-bottom: 0;">
+										<div class="group">
+										    <span>按钮文案</span>
+										    <input type="text" placeholder="4个字符以内"  maxlength="4" class="oneArticle article"/> 
+										</div> 
+										<div class="group">
+										    <span>按钮交互</span>
+										    <select class="active btninteractSelect oneInteract">
+										  	    <option value="1">跳转URL</option> 
+										  	    <option value="2">关闭弹窗</option>
+										  	    <option value="3">关闭弹窗且不在提醒</option>
+										    </select>
+										</div>
+									</div>  
+									<div class="group url oneUrl" style="margin-top:25px;">
+									    <span>跳转URL</span>
+									    <input type="text" class="oneUrlCont urlItem"/> 
+									</div> 
+								</div>
+								<!--两个按钮-->
+								<div class="twoButton"  style="display: none;">
+									<!--左按钮-->
+									<div class="leftBtn clearfix">
+										<div class="groupItem clearfix" style="margin-bottom: 0;">
+											<div class="group">
+											    <span>左按钮文案</span>
+											    <input type="text" placeholder="4个字符以内"  maxlength="4" class="leftArticle article"/> 
+											</div> 
+											<div class="group">
+											    <span>按钮交互</span>
+											    <select class="active btninteractSelect leftInteract">
+											  	    <option value="1">跳转URL</option> 
+											  	    <option value="2">关闭弹窗</option>
+											  	    <option value="3">关闭弹窗且不在提醒</option>
+											    </select>
+											</div>
+										</div>
+										<div class="group url leftUrl" style="margin-top:25px;">
+									        <span>跳转URL</span>
+										    <input type="text" class="leftUrlCont urlItem" /> 
+										</div> 
+									</div>
+									<!--右按钮-->
+									<div class="rigthBtn clearfix" >
+										<div class="groupItem clearfix" style="margin-bottom: 0;">
+											<div class="group">
+											    <span>右按钮文案</span>
+											    <input type="text" placeholder="4个字符以内" maxlength="4" class="rightArticle article"/> 
+											</div> 
+											<div class="group">
+											    <span>按钮交互</span>
+											    <select class="active btninteractSelect rightInteract">
+											  	    <option value="1">跳转URL</option> 
+											  	    <option value="2">关闭弹窗</option>
+											  	    <option value="3">关闭弹窗且不在提醒</option>
+											    </select>
+											</div>
+										</div>
+										<div class="group url rightUrl" style="margin-top:25px;">
+									        <span>跳转URL</span>
+										    <input type="text" class="rightUrlCont urlItem"/> 
+										</div> 
+									</div>
+								</div>
+						    </div>
+						</div> 
+					     <div class="btn-group">
+						    <button type="button" id="previewImg" class="am-btn  am-radius active " >预览</button>
+						    <button type="button" class="am-btn  am-radius active save">保存</button>
+						</div>
+
+					</div>
+				</div>
+			</div> 
+		</div>
+		<!--删除弹窗提示窗-->
+		<div class="am-modal am-modal-no-btn" tabindex="-1" id="delModel">
+		  <div class="am-modal-dialog delModel"> 
+		    <div class="am-modal-bd">
+		        <p>确定删除这个弹窗吗？</p> 
+		    </div>
+		     <div class="am-btn-group">  
+				<button type="button" class="am-btn am-btn-default cancel" data-am-modal-close>取消</button>
+				<button type="button" class="am-btn am-btn-secondary sure" data-am-modal-close>确定</button>
+			</div>
+		  </div>
+		</div> 
+		<!--图片预览-->
+	    <div class="am-modal am-modal-no-btn" tabindex="-1" id="preview">
+		  <div class="am-modal-dialog preview" style="width: 287px;"> 
+		    <div class="am-modal-bd">
+		        <img src=""  class="picture"/>
+		        <!--<span class="pictureName">图片名称</span>--> 
+		        <div class="buttons">
+		        	<button type="button" class="am-btn am-btn-secondary  am-radius oneBtn"></button>
+		        	<button type="button" class="am-btn am-btn-secondary  am-radius leftButton"></button> 
+		        	<button type="button" class="am-btn am-btn-secondary  am-radius rightButton"></button>
+		        </div> 
+		    </div>
+		  </div>
+		</div> 
+		<!--请求中，请稍后-->
+		<div class="request">
+			请求中，请稍后...
+		</div>
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/select2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/popManage.js" type="text/javascript" charset="utf-8"></script>
+</html>

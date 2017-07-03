@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>意见反馈</title>
+		<link rel="stylesheet" type="text/css" href="../css/amazeui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+		
+	</head>
+	<body class="body">
+		<div class="wrapper"> 
+			<!--content wrapper-->
+			<div class="content-wrapper">
+				<!--tab head-->
+				<div class="tabHead">
+					<a class="active feedList">反馈列表</a>
+			 	 	<a class="feedDetail" style="display: none;">反馈详情</a>
+				</div>
+				<!--tab content-->
+				<div class="tabContent">
+					<!--反馈列表-->
+					<div class="content" >
+						<!--查询条件-->
+						<div class="contentHead clearfix">
+							<div class="group">
+							    <span>所属模块</span>
+							    <select class="business"></select>
+							    <select class="module"></select>
+							</div> 
+							<div class="group">
+								<span>是否跟进</span>
+								<select class="isFollow">
+								  	<option value="">全部</option>
+								  	<option value="true">是</option>
+								  	<option value="false">否</option>
+								</select> 
+							</div> 
+							<button type="button" class="am-btn am-radius query">查询</button>
+						</div>
+						<!--数据列表-->
+						<div class="contentList">
+							<table id="dataList">
+								<thead><th>序号</th><th>所属业务线</th><th>所属模块</th><th>店铺名称</th><th>联系方式</th><th>反馈内容</th><th>反馈时间</th><th>是否跟进</th><th>跟进人</th><th>操作</th></thead>
+								<tbody></tbody>
+							</table>
+							<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix"> 
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev"><</a> 
+									<div class="box"></div>  
+									<a id="next">></a></a>
+					 	 	 	</div>
+				 	 	 	</div> 
+						</div>
+					</div>
+					<!--反馈详情-->
+					<div class="content" style="display: none;">
+					     <div class="feedBack">
+					     	 <div class="feedSet">
+					     	 	<div class="groupItem clearfix">
+									<div class="group">
+									    <span>所属模块</span>
+									     <input type="text" class="businessName active "/>
+									     <input type="text" class="moduleName active" />
+									</div>  
+									<div class="group">
+									    <span>版本详情</span>
+									    <input type="text" class="appVersion active" />
+									    <input type="text" class="appSystem active" />
+									</div>
+								</div>
+								<div class="groupItem clearfix">
+									<div class="group">
+									    <span>店铺编码</span>
+									    <input type="text" class="shopCode" />
+									</div>  
+									<div class="group">
+									    <span>店铺名称</span>
+									    <input type="text" class="shopName" />
+									</div>
+								</div>
+								<div class="groupItem clearfix">
+									<div class="group">
+									    <span>联系方式</span>
+									    <input type="text" class="contactWay"/>
+									</div>  
+								</div>
+					     	 </div>
+					     	 <div class="feedContent">
+					     	 	<div class="groupItem">
+									<div class="group">
+									    <span>反馈内容</span> 
+									</div>  
+									<textarea class="feedBackContent"></textarea>  
+								</div>
+								<div class="groupItem">
+									<div class="group">
+									    <span>反馈图</span> 
+									    <strong>*点击可查看原图</strong>
+									</div>   
+									<div class="feedbackImg clearfix"></div>
+								</div>
+								<div class="groupItem">
+									<div class="group">
+									    <span style="width: 110px;">跟进处理情况</span> 
+									</div>  
+									<textarea class="followContent"></textarea>  
+								</div>
+					     	 </div>
+					         <button type="button" class="am-btn am-radius submit">提交</button>
+					     </div>
+					</div>
+				</div>
+			</div> 
+		</div> 
+		<!--请求中，请稍后-->
+		<div class="request">
+			请求中，请稍后...
+		</div>
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/feedBack.js" type="text/javascript" charset="utf-8"></script>
+</html>

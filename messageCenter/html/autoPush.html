@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>自动推送模板</title>
+		<link rel="stylesheet" type="text/css" href="../css/amazeui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+	</head>
+	<body class="body">
+		<div class="wrapper"> 
+			<!--content wrapper-->
+			<div class="content-wrapper">
+				<!--tab head-->
+				<div class="tabHead">
+					<a class="active">模板列表</a>
+			 	 	<a class="createModule">新建模板</a>
+				</div>
+				<!--tab content-->
+				<div class="tabContent">
+					<!--模板列表-->
+					<div class="content" >
+						<!--查询条件-->
+						<div class="contentHead clearfix">
+							<div class="group">
+							    <span>所属业务线</span>
+							    <select class="business business1"></select>
+							    <select class="module module1"></select>
+							</div> 
+							<div class="group">
+								<span>推送状态</span>
+								<select class="push_status">
+								  	<option value="">全部</option> 
+								  	<option value="0">已停止</option> 
+								  	<option value="1">已开启</option>  
+								</select> 
+							</div> 
+							<div class="group">
+								<span>token</span>
+								<input type="text"  id="token"/>
+							</div> 
+							<button type="button" class="am-btn am-radius query">查询</button>
+						</div>
+						<!--数据列表-->
+						<div class="contentList">
+							<table>
+								<thead><th>模板编号</th><th>所属业务线</th><th>所属模块</th><th>触发事件描述</th><th>创建者</th><th>创建时间</th><th>推送状态</th><th>token</th><th>操作</th></thead>
+								<tbody></tbody>
+							</table>
+							<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix"> 
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev"><</a> 
+									<div class="box"></div>  
+									<a id="next">></a></a>
+					 	 	 	</div>
+				 	 	 	</div> 
+						</div>
+					</div>
+					<!--新建模板-->
+					<div class="content" style="display: none;">
+					     <!--新建模板1-->
+					     <div class="template template1">
+					     	<div class="groupItem clearfix">
+								<div class="group">
+								    <span>所属模块</span>
+								    <select class="business business2"></select>
+							        <select class="module module2"></select>
+								</div>
+								<div class="group">
+								     <a>*消息模板API使用说明</a>
+								</div> 
+							</div>
+							<div class="groupItem triggerEvent">
+					    		<div class="group">
+					    			<span>触发事件描述</span>  
+					    		</div> 
+					    	    <textarea  class="triggerDes" placeholder="简要描述模板触发事件，限20个字符以内"  maxlength="20"></textarea>  
+					    	</div>
+					        <button type="button" class="am-btn am-radius next">下一步，获取token</button>
+					     </div>
+					     <!--新建模板2-->
+					     <div class="template template2" style="display: none;">
+					     	<div class="groupItem clearfix">
+								<div class="group">
+								    <span>所属模块</span>
+								    <select class="business business3"></select>
+							        <select class="module module3"></select>
+								</div>
+								<div class="group">
+								     <a>*消息模板API使用说明</a>
+								</div> 
+							</div>
+							<div class="groupItem triggerEvent">
+					    		<div class="group">
+					    			<span>触发事件描述</span>  
+					    		</div> 
+					    	    <textarea class="triggerDesCopy"  maxlength="20"></textarea>  
+					    	</div>
+					    	<div class="groupItem clearfix">
+					    		<div class="group">
+								    <span>token</span>
+								    <div class="tokenCode"></div> 
+								</div>
+								<div class="group">
+								    <span style="width: 120px;">推送状态设置</span>
+								    <select class="pushStatus">
+								  	    <option value="1">已开启</option> 
+								  	    <option value="0">已停止</option>
+								    </select> 
+								</div>
+					    	</div>
+					    	
+					        <button type="button" class="am-btn am-radius submit">提交</button>
+					     </div>
+					</div>
+				</div>
+			</div> 
+		</div> 
+		<!--请求中，请稍后-->
+		<div class="request">
+			请求中，请稍后...
+		</div>
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/amazeui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/autoPush.js" type="text/javascript" charset="utf-8"></script>
+</html>

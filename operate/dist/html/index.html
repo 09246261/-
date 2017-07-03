@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>商家中心</title>  
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/>  
+		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+	</head>
+	<body>
+		 <div class="wrapper"> 
+		 	<aside class="main-sidebar">
+		 		<div class="sidebar-head">
+					<span>商家中心后台</span>
+				</div>
+				<ul class="sidebar-menu">
+					<li class="treeView">
+						<a data-toggle="collapse" href="#collapseOne"  aria-expanded="true" class="treeview-head"><img src="../img/seller.png" />商家中心</a>
+						<ul id="collapseOne" class="panel-collapse collapse in treeview-menu" >
+							<li><a url="operateGuide.html"  class="active firstItem" rel="0">操作指南列表</a></li>
+							<li><a url="comProblem.html" rel="1">常见问题列表</a></li>
+							<li><a url="questionSort.html" rel="2">问题分类列表</a></li>
+							<li><a url="marketCase.html" rel="3">营销案例列表</a></li>
+						</ul>
+					</li>
+					<li class="treeView">
+						<a data-toggle="collapse" href="#collapseTwo" aria-expanded="true" class="treeview-head"><img src="../img/material.png" />素材管理</a>
+						<ul id="collapseTwo" class="panel-collapse collapse in treeview-menu">
+							<li><a url="banner.html" class="banner" rel="4">Banner</a></li>
+							<li><a url="video.html" class="video" rel="5">视频列表</a></li>
+						</ul>
+					</li>  
+				</ul>
+		 	</aside> 
+		 	<div class="tabBox">
+		 		<ul id="tabs" class="clearfix"></ul>
+		 	</div> 
+		 	<div id="content"></div>
+		 	
+		</div>	 
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script>  
+	 <script src="../js/index.js" type="text/javascript" charset="utf-8"></script>
+</html>

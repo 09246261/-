@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>视频</title> 
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+	</head>
+	<body>
+		 <div class="wrapper"> 
+		 	<!--Content Wrapper. Contains page content-->
+		 	<div class="content-wrapper"> 
+			 	 <div class="tabHead"> 
+			 	 	<div class="tab">
+			 	 		<a class="list active">视频列表</a>
+			 	 	    <a class="createVideo" data-toggle="modal" data-target="#createVideo">添加视频</a>
+			 	 	</div> 
+			 	 </div>  
+			 	 <div class="tabContent">
+			 	 	<!--视频列表-->
+			 	 	 <div class="content"> 
+			 	 	 	<!--查询条件-->
+			 	 	 	<div class="contentHead">
+				 	 	 	<div class="group sort">
+				 	 	 		 <span>店铺类型</span> 
+				 	 	 		 <select class="shopType shopType1">
+				 	 	 		 	<option value="0">单店</option>
+				 	 	 		 	<option value="1">连锁</option>
+				 	 	 		 	<option value="2">分公司</option>
+				 	 	 		 </select>
+				 	 	 	</div>
+				 	 	 	<div class="group sort">
+				 	 	 		<span>功能分类</span>
+			 	 	 		 	<select class="functionSort functionSort1" id="functionSort"></select>
+				 	 	 	</div>
+				 	 	 	<div class="group"> 
+				 	 	 		 <span>功能名称</span>
+			 	 	 		 	<select class="functionName functionName1"></select>
+				 	 	 	</div> 
+				 	 	 	<div class="group search">
+				 	 	 		<span>关键词</span>
+				 	 	 		<input type="text"  id="searchText"/>
+				 	 	 		<div class="searchBtn"></div>
+				 	 	 	</div> 
+				 	 	</div>
+				 	 	<!--数据列表-->
+				 	 	<div class="contentList">
+				 	 	 	<table>
+				 	 	 		<thead><tr><th>视频名称</th><th>所属分类</th><th>功能名称</th><th>添加时间</th><th>播放量</th><th>链接地址</th><th>操作</th></tr></thead>
+				 	 	 		<tbody></tbody> 
+				 	 	 	</table>
+				 	 	 	<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix"> 
+				 	 	 		<div class="totalBox">
+				 	 	 			共 <span class="total"></span> 条视频
+				 	 	 		</div>
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev">上一页</a> 
+									<div class="box"></div>  
+									<a id="next">下一页</a></a>
+									<span>到第</span>
+									<input type="text" class="numPage" />
+									<span>页</span>
+									<button class="surePage">确定</button>
+					 	 	 	</div>
+				 	 	 	</div> 
+				 	 	</div>
+			 	 	 </div>
+			 	 </div>
+			</div>
+		 </div> 
+		<div class="model"> 
+			<div class="modal  bs-example-modal-sm" id="video" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div id="modal-dialog" class="modal-dialog modal-sm" style="width: 400px;">
+					<form id="editForm">
+					<div class="modal-content"> 
+						<div class="modal-header"> 
+				       		 <h4>编辑视频</h4>
+				        </div>
+						<div class="modal-body">  
+							<div class="group videoGroup">
+				 	 	 		<span>视频名称</span>
+			 	 	 		 	<input type="text" placeholder="在这里输入视频名称" id="videoName1" maxlength="64"/>
+				 	 	 	</div> 
+				 	 	 	<div class="group linkGroup">
+				 	 	 		<span>添加链接</span>
+			 	 	 		 	<input type="text" id="videoLink1" />
+				 	 	 	</div>
+				 	 	 	<div class="group sort">
+				 	 	 		 <span>店铺类型</span> 
+				 	 	 		 <select class="shopType shopType2" id="shopType">
+				 	 	 		 	<option value="0">单店</option>
+				 	 	 		 	<option value="1">连锁</option>
+				 	 	 		 	<option value="2">分公司</option>
+				 	 	 		 </select>
+				 	 	 	</div>
+				 	 	 	<div class="group sort">
+				 	 	 		<span>功能分类</span>
+			 	 	 		 	<select class="functionSort functionSort2" id="funType"></select>
+				 	 	 	</div>
+				 	 	 	<div class="group"> 
+				 	 	 		 <span>功能名称</span>
+			 	 	 		 	<select class="functionName functionName2" id="function"></select>
+				 	 	 	</div>
+						</div>	 			 
+						<div class="modal-footer">  
+							<button type="button" class="videoSure videoSure1"  >确定</button>
+							<button type="button" class="cancel videoCancel1" data-dismiss="modal">取消</button>
+						</div>
+					</div> 
+					</form>
+				</div> 
+		   </div> 
+		</div>  
+		<div class="model"> 
+			<div class="modal  bs-example-modal-sm" id="createVideo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div id="modal-dialog" class="modal-dialog modal-sm" style="width: 400px;">
+					<div class="modal-content"> 
+						<div class="modal-header"> 
+				       		 <h4></h4>
+				        </div>
+						<div class="modal-body">  
+							<div class="group videoGroup">
+				 	 	 		<span>视频名称</span>
+			 	 	 		 	<input type="text" placeholder="在这里输入视频名称" id="videoName2" maxlength="64"/>
+				 	 	 	</div> 
+				 	 	 	<div class="group linkGroup">
+				 	 	 		<span>添加链接</span>
+			 	 	 		 	<input type="text" id="videoLink2" />
+				 	 	 	</div>
+				 	 	 	<div class="group sort">
+				 	 	 		 <span>店铺类型</span> 
+				 	 	 		 <select class="shopType shopType3">
+				 	 	 		 	<option value="0">单店</option>
+				 	 	 		 	<option value="1">连锁</option>
+				 	 	 		 	<option value="2">分公司</option>
+				 	 	 		 </select>
+				 	 	 	</div>
+				 	 	 	<div class="group sort">
+				 	 	 		<span>功能分类</span>
+			 	 	 		 	<select class=" functionSort functionSort3"></select>
+				 	 	 	</div>
+				 	 	 	<div class="group"> 
+				 	 	 		 <span>功能名称</span>
+			 	 	 		 	<select class="functionName functionName3"></select>
+				 	 	 	</div>
+						</div>	 			 
+						<div class="modal-footer">  
+							<button type="button" class="videoSure videoSure2"  >确定</button>
+							<button type="button" class="cancel videoCancel2" data-dismiss="modal">取消</button>
+						</div>
+					</div> 
+				</div> 
+		   </div> 
+		</div> 
+		 <!--弹窗提示--> 
+		 <div class="popup"></div>
+		  <!--刷新-->
+		<div class="refresh"> 
+			<img src="../img/refresh.png"  />
+			<span>刷新该页面</span>
+		</div>
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script>  
+	<script src="../js/libs/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/video.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Banner</title> 
+		<link rel="stylesheet" type="text/css" href="../css/select2.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+	</head>
+	<body>
+		 <div class="wrapper">  
+		 	<!--Content Wrapper. Contains page content-->
+		 	<div class="content-wrapper"> 
+			 	 <div class="tabHead"> 
+			 	 	<div class="tab">
+			 	 		<a class="list active">Banner</a>
+			 	 	    <a class="create" data-toggle="modal" data-target="#bannerCreate">新建Banner</a>
+			 	 	</div> 
+			 	 </div>  
+			 	 <div class="tabContent">
+			 	 	<!--Banner-->
+			 	 	 <div class="content"> 
+			 	 	 	<!--操作-->
+			 	 	 	<div class="contentHead">
+				 	 	 	<div class=" group release">发布</div>
+				 	 	 	<div class=" group revokeRelease">撤销发布</div>
+				 	 	</div>
+				 	 	<!--数据列表-->
+				 	 	<div class="contentList">
+				 	 	 	<ul class="clearfix"></ul>
+				 	 	 	<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix" style="border-top:1px solid #E6E6E6;">
+				 	 	 		<div class="totalBox">
+				 	 	 			共 <span class="total"></span> 条图文信息
+				 	 	 		</div>
+				 	 	 	    <!--<div class="selectBtn clearfix">
+				 	 	 	    	<input type="checkbox" id="selectAll" />
+				 	 	 	    	<span>全选</span>
+				 	 	 	    	<button type="button" class="delAll">删除</button>
+				 	 	 	    </div>-->
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev">上一页</a>
+									<div class="box"></div>
+									<a id="next">下一页</a></a>
+									<span>到第</span>
+									<input type="text" class="numPage" />
+									<span>页</span>
+									<button class="surePage">确定</button>
+					 	 	 	</div>
+				 	 	 	</div> 
+				 	 	</div>
+			 	 	 </div> 
+			 	 </div>
+			</div>
+		 </div>
+		<!--新建banner-->
+		<div class="model" > 
+			<div class="modal  bs-example-modal-sm" id="bannerCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 1050; ">
+				<div id="modal-dialog" class="modal-dialog modal-sm" style="width: 400px;">
+					<div class="modal-content"> 
+						<div class="modal-header"> 
+				       		 <h4>新建Banner</h4>
+				        </div>
+						<div class="modal-body">
+							<form>
+								<div class="upload">
+									<input type="file" id="fileCreate" accept="image/gif,image/jpeg,image/jpg,image/png"/>
+									<label for="fileCreate">点击上传本地图片(尺寸640*260)</label>
+								</div>
+								<div class="group">
+					 	 	 		<span>图片名称</span>
+				 	 	 		 	<input type="text" placeholder="在这里输入图片名称" id="pictureName" maxlength="64"/>
+					 	 	 	</div>
+							</form> 
+				 	 	 	<div class="group">
+				 	 	 		<span>链接文章</span>
+			 	 	 		 	<select class="linkArticle" id="linkArticle"></select> 
+				 	 	 	</div>
+						</div>	 			 
+						<div class="modal-footer">  
+							<button type="button" class="createSure">确定</button>
+							<button type="button" class="cancel" data-dismiss="modal" onclick="($('.tabHead a').eq(0).trigger('click'))">取消</button>
+						</div>
+					</div> 
+				</div> 
+		   </div> 
+		</div> 	
+		<!--Banner编辑-->
+		<div class="model"> 
+		  <div class="modal  bs-example-modal-sm" id="bannerEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index: 1050; ">
+			<div id="modal-dialog" class="modal-dialog modal-sm" style="width: 400px;" >
+				<div class="modal-content"> 
+					<div class="modal-header"> 
+			       		 <h4>编辑</h4>
+			        </div>
+					<div class="modal-body"> 
+						<div class="upload">
+							<form>
+								<input type="file" id="fileEdit" accept="image/gif,image/jpeg,image/jpg,image/png"/>
+							    <label for="fileEdit">点击上传本地图片(尺寸640*260)</label>
+							</form> 
+						</div>
+						<div class="group">
+			 	 	 		<span>图片名称</span>
+		 	 	 		 	<input type="text"  id="editName" maxlength="64"/>
+			 	 	 	</div>
+			 	 	 	<div class="group">
+			 	 	 		<span>链接文章</span>
+		 	 	 		 	<select class="editLink" id="editLink" ></select> 
+			 	 	 	</div>
+					</div>	 			 
+					<div class="modal-footer">  
+						<button type="button" class="editSure">确定</button>
+						<button type="button" class="cancel" data-dismiss="modal">取消</button>
+					</div>
+				</div> 
+			</div> 
+		   </div> 
+		</div> 	
+		 <!--Banner删除提示-->  
+		<div class="bannerDel"></div>
+		<!--发布点击保存时提示-->
+		<div class="model"> 
+			<div class="modal  bs-example-modal-sm" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div id="modal-dialog" class="modal-dialog modal-sm"> 
+					<div class="modal-content"> 
+						<div class="modal-header"> 
+				       		 <h4>保存</h4>
+				        </div>
+						<div class="modal-body"> 
+							<div class="saveTip">保存后，需重新点击“发布”才会显示在商家中心，是否仅保存？  </div>
+						</div>	 			 
+						<div class="modal-footer">  
+							<button type="button" class="yes" data-dismiss="modal">是</button>
+							<button type="button" class="cancel no" data-dismiss="modal">否</button>
+						</div>
+					</div> 
+				</div> 
+		   </div> 
+		</div>
+		 <!--刷新-->
+		<div class="refresh"> 
+			<img src="../img/refresh.png"  />
+			<span>刷新该页面</span>
+		</div>
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../js/libs/select2.full.min.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../js/libs/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/banner.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>版本介绍</title> 
+		<link rel="stylesheet" type="text/css" href="../css/amazeui.min.css"/>  
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+		<style type="text/css">
+			.w-e-text-container{z-index: 1!important;}
+			.am-datepicker-dropdown{z-index: 10001;}
+		</style>
+	</head>
+	<body class="body"> 
+		<div class="wrapper"> 
+			<!--content wrapper-->
+			<div class="content-wrapper">
+				<!--tab head-->
+				<div class="tabHead">
+					<a class="active">版本介绍</a>
+			 	 	<a class="vertionDetail">版本详情</a>
+				</div>
+				<!--tab content-->
+				<div class="tabContent">
+					<!--版本列表-->
+					<div class="content" >
+						<!--查询条件-->
+						<div class="contentHead clearfix">
+							<div class="group">
+							    <span>所属模块</span>
+							    <select class="business business1"></select>
+							    <select class="module module1"></select>
+							</div>  
+							<button type="button" class="am-btn am-radius query">查询</button>
+						</div>
+						<!--数据列表-->
+						<div class="contentList">
+							<table id="dataList">
+								<thead><th>序号</th><th>所属业务线</th><th>所属模块</th><th>版本号</th><th>发布日期</th><th>操作</th></thead>
+								<tbody></tbody>
+							</table>
+							<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix"> 
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev"><</a> 
+									<div class="box"></div>  
+									<a id="next">></a></a>
+					 	 	 	</div>
+				 	 	 	</div> 
+						</div>
+					</div>
+					<!--版本详情-->
+					<div class="content" style="display: none;"> 
+						 <div class="version">
+						 	<!--版本设置-->
+						 	<div class="versionSet">
+						 		<div class="groupItem clearfix">
+									<div class="group">
+									    <span>所属模块</span>
+									    <select class="business business2"></select>
+							    		<select class="module module2"></select>
+									</div>   
+								</div>
+								<div class="groupItem clearfix">
+									<div class="group">
+									    <span>版本号</span>
+									    <input type="text" class="versionCode" />
+									</div>  
+									<div class="group">
+									    <span>发布日期</span> 
+									    <input id="datetimepicker" type="text" onClick="WdatePicker()" placeholder="请设置日期"/> 
+									</div>
+								</div>
+						 	</div>
+						 	<!--详情内容-->
+						 	<div class="versionDetail">
+						 		<div class="groupItem clearfix">
+									<div class="group">
+									    <span>标题</span>
+									    <input type="text" class="title" placeholder="请输入内容标题" style="width:872px;"/>
+									</div>  
+								</div>
+								<div class="groupItem">
+						    		<div class="group" style="float: none;">
+						    			<span class="versionDes">详情内容</span>  
+						    		</div>  
+						    	    <div id="editor">
+						    	    	<p>请输入详情内容</p>
+						    	    </div>
+						    	</div>
+						 	</div>
+						 	 <!--按钮 取消 保存-->
+						    <div class="btn-box"> 
+						    	<button type="button" class="cancel">取消</button>
+						    	<button type="button" class="save">保存</button>
+						    </div>
+						 </div>  
+					</div>
+				</div>
+			</div> 
+		</div> 
+		<!--请求中，请稍后-->
+		<div class="request">
+			请求中，请稍后...
+		</div>
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../js/libs/wangEditor.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script>   
+	<script src="../js/libs/amazeui.min.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/versionEdit.js" type="text/javascript" charset="utf-8"></script>
+</html>

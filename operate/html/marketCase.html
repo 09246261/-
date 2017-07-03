@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>营销案例</title> 
+		<link rel="stylesheet" type="text/css" href="../ueditor/themes/default/css/ueditor.css"/>
+		<link rel="stylesheet" type="text/css" href="../ueditor/third-party/codemirror/codemirror.css"/>
+		<link rel="stylesheet" type="text/css" href="../ueditor/css/editor-style.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+	</head>
+	<body>
+		 <div class="wrapper"> 
+		 	<!--Content Wrapper. Contains page content-->
+		 	<div class="content-wrapper"> 
+			 	 <div class="tabHead"> 
+			 	 	<div class="tab">
+			 	 		<a class="list active" flag="true">营销案例列表</a>
+			 	 	    <a class="create">新建营销案例</a>
+			 	 	</div> 
+			 	 </div> 
+			 	 <div class="tabContent">
+			 	 	<!--营销案例列表-->
+			 	 	 <div class="content"> 
+			 	 	 	<!--查询条件-->
+			 	 	 	<div class="contentHead"> 
+				 	 	 	<div class="group state">
+				 	 	 		<span>状态</span>
+			 	 	 		 	<select class="functionState"> 
+			 	 	 		 	   <option value="">全部</option>
+				 	 	 		   <option value="1">已保存</option> 
+				 	 	 		   <option value="2">已发布</option>
+				 	 	 		   <option value="3">已撤销</option>
+				 	 	 		</select>
+				 	 	 	</div>
+				 	 	 	<div class="group search">
+				 	 	 		<span>关键词</span>
+				 	 	 		<input type="text"  id="searchText"/>
+				 	 	 		<div class="searchBtn"></div>
+				 	 	 	</div> 
+				 	 	</div>
+				 	 	
+				 	 	<!--数据列表-->
+				 	 	<div class="contentList">
+				 	 	 	<table id="dataList">
+				 	 	 		<thead><tr><th>标题</th><th>状态</th><th>创建日期</th><th>阅读量</th><th>点赞量</th><th>收藏量</th><th>操作</th></tr></thead>
+				 	 	 		<tbody></tbody> 
+				 	 	 	</table>
+				 	 	 	<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix"> 
+				 	 	 		<div class="totalBox">
+				 	 	 			共 <span class="total"></span> 条营销案例
+				 	 	 		</div>
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev">上一页</a>
+									<div class="box"></div>
+									<a id="next">下一页</a></a>
+									<span>到第</span>
+									<input type="text" class="numPage" />
+									<span>页</span>
+									<button class="surePage">确定</button>
+					 	 	 	</div>
+				 	 	 	</div> 
+				 	 	</div>
+			 	 	 </div>
+			 	 	 <!--新建营销案例-->
+			 	 	 <div class="content"  style="display: none;">
+			 	 	 	 <!--查询条件-->
+			 	 	 	<div class="contentHead" style="height: auto;"> 
+				 	 	 	<div class="group setWord" onselectstart="return false">设置关联词</div> 
+				 	 	 	<div class="group relateWord"> 
+				 	 	 		<span>已选关联词</span>
+				 	 	 		<div class="wordDiv"></div>
+				 	 	 	</div> 
+				 	 	 	<div class="group search" style="float: none;margin-bottom: 20px;"> 
+				 	 	 		<input type="text"  id="title" placeholder="请在此输入标题" maxlength="64" style="width: 100%;"/> 
+				 	 	 	</div> 
+				 	 	 	<!--<div class="group uploadBox"> 
+				 	 	 		<div class="uploadfile">
+				 	 	 			<input type="file" id="file" />
+				 	 				<label for="file" class="file">点击此处本地上传封面图片</label>
+				 	 	 		</div>
+				 	 	 		<span class="change" onclick="($('.coverMap').show())">更换</span>
+				 	 	 		<span class="previewImg" onclick="($('.coverPreview').show())">预览</span>
+				 	 	 	</div>  -->
+				 	 	</div>
+				 	 	 
+				 	 	<!--文本编辑器-->
+				 	 	<div class="textEdit">
+				 	 		<div class="left">
+				 	 			<h4>图文列表</h4>
+				 	 			<div class="upload">
+				 	 				<form>
+				 	 					<div class="top" ></div> 
+					 	 				<div class="bottom">
+					 	 					<input type="file" id="uploadInput" />
+					 	 					<label for="uploadInput" class="uploadInput"></label>
+					 	 				</div> 
+				 	 				</form> 
+				 	 			</div> 
+				 	 		</div>
+				 	 		<div class="right">
+				 	 			<script id="editor" name="content" type="text/plain" style="height: 500px;width: 100%;"></script>
+				 	 			<div class="btnBox"> 
+				 	 				<button class="save">保存</button>
+				 	 				<button class="marketCancel remove" data-toggle="modal" data-target="#leaveModal">取消</button>
+				 	 				<button class="preview" id="btn-preview">预览</button>
+				 	 				<button class="release" data-toggle="modal" data-target="#myModal">发布</button>
+				 	 			</div>
+				 	 		</div>
+				 	 	</div>
+				 	 	<div class="preview-layer">
+							<div class="preview-bg"></div>
+							<div class="preview-phone">
+								<iframe id="preview-html" name="preview-html" src="article.html"></iframe>
+							</div>
+						</div>
+			 	 	     <!--封面图更换-->
+						 <div class="coverMap">
+						 	<form>
+							 	 <div class="top">
+							 	 	<img src="../img/bg.png" id="img1" class="active"/>
+							 	 	<img src="../img/bg.png" id="img2" />
+							 	 	<img src="../img/bg.png" id="img3" />
+							 	 </div>
+							 	 <div class="bottom">
+							 	 	<!--A B C-->
+							 	 	 <div class="check">
+							 	 	 	 <div class="checkboxItem active">
+							 	 	 	 	  <input type="checkbox" checked/>
+							 	 	 	 	  <label>A</label>
+							 	 	 	 </div>
+							 	 	 	 <div class="checkboxItem">
+							 	 	 	 	  <input type="checkbox" />
+							 	 	 	 	  <label>B</label>
+							 	 	 	 </div>
+							 	 	 	 <div class="checkboxItem">
+							 	 	 	 	  <input type="checkbox" />
+							 	 	 	 	  <label>C</label>
+							 	 	 	 </div>
+							 	 	 </div>
+							 	 	 <!--上传-->
+							 	 	 <button type="button" id="upload">上传</button>
+							 	 	 <!--更换-->
+							 	 	 <div class="file">
+							 	 	 	<div class="fileItem active">
+							 	 	 		<input type="file" id="file1"/>
+							 	 	 		<label for="file1">更换</label>
+							 	 	 	</div>
+							 	 	 	<div class="fileItem">
+							 	 	 		<input type="file" id="file2"/>
+							 	 	 		<label for="file2">更换</label>
+							 	 	 	</div> 
+							 	 	 	<div class="fileItem">
+							 	 	 		<input type="file" id="file3"/>
+							 	 	 		<label for="file3">更换</label>
+							 	 	 	</div> 
+							 	 	 </div>
+							 	 	 <!--取消-->
+							 	 	 <button type="button" id="cancel" onclick="($('.coverMap').hide())">取消</button>
+							 	 </div>
+						 	 </form>
+						 </div>
+			 	 	     <!--预览-->
+			 	 	     <div class="coverPreview"> 
+			 	 	     	 <img src="" id="coverImg" />
+			 	 	     	 <button onclick="($('.coverPreview').hide())">取消</button>
+			 	 	     </div>
+			 	 	 </div> 
+			 	 </div>
+		    </div>
+		 </div> 
+		<!--发布点击保存时提示-->
+		<div class="model"> 
+			<div class="modal  bs-example-modal-sm" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div id="modal-dialog" class="modal-dialog modal-sm"> 
+					<div class="modal-content"> 
+						<div class="modal-header"> 
+				       		 <h4>保存</h4>
+				        </div>
+						<div class="modal-body"> 
+							<div class="saveTip">保存后，需重新点击“发布”才会显示在商家中心，是否仅保存？  </div>
+						</div>	 			 
+						<div class="modal-footer">  
+							<button type="button" class="yes" data-dismiss="modal">是</button>
+							<button type="button" class="cancel no" data-dismiss="modal">否</button>
+						</div>
+					</div> 
+				</div> 
+		   </div> 
+		</div> 
+		 <!--弹窗提示--> 
+		 <div class="popup"></div>  
+		 <div class="leavePop"></div>
+		<!--复制成功提示-->
+		<div class="copySuccess">
+			复制成功
+		</div>
+		 <!--刷新-->
+		<div class="refresh"> 
+			<img src="../img/refresh.png"  />
+			<span>刷新该页面</span>
+		</div>
+		
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script>  
+	<script src="../ueditor/home.config.js"></script>
+    <script src="../ueditor/ueditor.all.min.js"></script>
+    <script src="../ueditor/lang/zh-cn/zh-cn.js" type="text/javascript" defer="defer"></script> 
+    <script src="../ueditor/third-party/codemirror/codemirror.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../ueditor/third-party/zeroclipboard/ZeroClipboard.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../ueditor/2dfire-editor.js" type="text/javascript" charset="utf-8"></script>
+     <script src="../ueditor/editor.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../js/libs/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/marketCase.js" type="text/javascript" charset="utf-8"></script>
+</html>

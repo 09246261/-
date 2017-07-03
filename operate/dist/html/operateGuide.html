@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>操作指南</title>   
+		<link rel="stylesheet" type="text/css" href="../ueditor/themes/default/css/ueditor.css"/>
+		<link rel="stylesheet" type="text/css" href="../ueditor/third-party/codemirror/codemirror.css"/>
+		<link rel="stylesheet" type="text/css" href="../ueditor/css/editor-style.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/> 
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/>  
+	</head>
+	<body style="position: relative;">
+		 <div class="wrapper">  
+		 	<!--Content Wrapper. Contains page content-->
+		 	<div class="content-wrapper"> 
+			 	 <div class="tabHead"> 
+			 	 	<div class="tab">
+			 	 		<a class="list active"  flag="true">操作指南列表</a>
+			 	 	    <a class="create" id="create" style="display: none;">新建操作指南</a>
+			 	 	</div> 
+			 	 </div> 
+			 	 <div class="tabContent">
+			 	 	<!--操作指南列表-->
+			 	 	 <div class="content"> 
+			 	 	 	<!--查询条件-->
+			 	 	 	<div class="contentHead">
+			 	 	 		<div class="group sort">
+				 	 	 		 <span>店铺类型</span> 
+				 	 	 		 <select class="shopType">
+				 	 	 		 	<option value="0">单店</option>
+				 	 	 		 	<option value="1">连锁</option>
+				 	 	 		 	<option value="2">分公司</option>
+				 	 	 		 </select>
+				 	 	 	</div>
+				 	 	 	<div class="group sort">
+				 	 	 		<span>功能分类</span>
+			 	 	 		 	<select class="functionSort functionSort1" id="functionSort"></select>
+				 	 	 	</div>
+				 	 	 	<div class="group"> 
+				 	 	 		 <span>功能名称</span>
+			 	 	 		 	<select class="functionName functionName1"></select>
+				 	 	 	</div> 
+				 	 	 	<div class="group state">
+				 	 	 		<span>状态</span>
+			 	 	 		 	<select class="functionState"> 
+			 	 	 		 	   <option value="">全部</option>
+			 	 	 		 	   <option value="0">未添加</option> 
+				 	 	 		   <option value="1">已保存</option> 
+				 	 	 		   <option value="2">已发布</option>
+				 	 	 		   <option value="3">已撤销</option>
+				 	 	 		</select>
+				 	 	 	</div>
+				 	 	 	<div class="group search">
+				 	 	 		<span>关键词</span>
+				 	 	 		<input type="text"  id="searchText"/>
+				 	 	 		<div class="searchBtn"></div>
+				 	 	 	</div> 
+				 	 	</div>
+				 	 	<!--数据列表-->
+				 	 	<div class="contentList">
+				 	 	 	<table id="dataList">
+				 	 	 		<thead><tr><th>所属分类</th><th>使用指南标题</th><th>状态</th><th>操作</th></tr></thead>
+				 	 	 		<tbody></tbody> 
+				 	 	 	</table>
+				 	 	 	<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix"> 
+				 	 	 		<div class="totalBox">
+				 	 	 			共 <span class="total"></span> 条操作指南
+				 	 	 		</div>
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev1">上一页</a> 
+									<div class="box"></div>  
+									<a id="next1">下一页</a></a>
+									<span>到第</span>
+									<input type="text" class="numPage" />
+									<span>页</span>
+									<button class="surePage1">确定</button>
+					 	 	 	</div> 
+				 	 	 	</div> 
+				 	 	</div>
+			 	 	 </div>
+			 	 	 <!--新建操作指南-->
+			 	 	 <div class="content"  style="display: none;">
+			 	 	 	 <!--查询条件-->
+			 	 	 	<div class="contentHead">
+				 	 	 	<div class="group video">
+				 	 	 		 <span>选择视频</span>
+				 	 	 		 <select id="choiseVideo"></select>
+				 	 	 	</div>
+				 	 	 	<div class=" group anchor" style="display: none;">插入锚点</div>
+				 	 	 	<div class="group" id="actionType"> 
+				 	 	 		<span>店铺类型</span>
+			 	 	 		 	<select class="shopType" >
+				 	 	 		 	<option value="0">单店</option>
+				 	 	 		 	<option value="1">连锁</option>
+				 	 	 		 	<option value="2">分公司</option>
+				 	 	 		 </select>
+				 	 	 	</div> 
+				 	 	 	<div class="group sort" id="actionSort">
+				 	 	 		<span>功能分类</span>
+			 	 	 		 	<select class="functionSort functionSort2" ></select>
+				 	 	 	</div>
+				 	 	 	<div class="group"> 
+				 	 	 		 <span>功能名称</span>
+			 	 	 		 	<select class="functionName functionName2" id="actionName"></select>
+				 	 	 	</div> 
+				 	 	</div>
+				 	 	<!--文本编辑器-->
+				 	 	<div class="textEdit"> 
+				 	 		<div class="right">
+				 	 			<script id="editor" name="content" type="text/plain" style="height: 500px;width: 100%;"></script>
+				 	 			<div class="btnBox"> 
+				 	 				<button class="save">保存</button>
+				 	 				<button class="editCancel remove" data-toggle="modal" data-target="#leaveModal">取消</button>
+				 	 				<button class="preview" id="btn-preview" >预览</button>
+				 	 				<button class="release"  data-toggle="modal" data-target="#myModal">发布</button>
+				 	 			</div>
+				 	 		</div>
+				 	 	</div>
+			 	 	 </div> 
+			 	    <div class="preview-layer">
+						<div class="preview-bg"></div>
+						<div class="preview-phone">
+							<iframe id="preview-html" name="preview-html" src="article.html"></iframe>
+						</div>
+					</div>
+			 	 </div>
+		 	 </div>
+		 </div>
+		<!--锚点弹窗--> 
+		<div class="anchor-out">
+			<div class="anchor-in">
+				<div class="anchor-header"> 
+		       		 <h4>修改锚点链接地址</h4>
+		        </div>
+				<div class="anchor-body"> 
+					<div  contenteditable="true" id="anchorAddress"></div>
+				</div>	 			 
+				<div class="anchor-footer">  
+					<button type="button" id="sure" data-dismiss="modal">确定</button>
+					<button type="button" id="cancel" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+		 
+		<!--发布点击保存时提示-->
+		<div class="model"> 
+			<div class="modal  bs-example-modal-sm" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div id="modal-dialog" class="modal-dialog modal-sm"> 
+					<div class="modal-content"> 
+						<div class="modal-header"> 
+				       		 <h4>保存</h4>
+				        </div>
+						<div class="modal-body"> 
+							<div class="saveTip">保存后，需重新点击“发布”才会显示在商家中心，是否仅保存？  </div>
+						</div>	 			 
+						<div class="modal-footer">  
+							<button type="button" class="yes" data-dismiss="modal">是</button>
+							<button type="button" class="cancel no" data-dismiss="modal">否</button>
+						</div>
+					</div> 
+				</div> 
+		   </div> 
+		</div> 
+		 <!--弹窗提示--> 
+		<div class="popup"></div>  
+		<div class="leavePop"></div>
+		 <!--刷新-->
+		<div class="refresh"> 
+			<img src="../img/refresh.png"  />
+			<span>刷新该页面</span>
+		</div>
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script>  
+	<script src="../ueditor/home.config.js"></script>
+    <script src="../ueditor/ueditor.all.min.js"></script>
+    <script src="../ueditor/lang/zh-cn/zh-cn.js" type="text/javascript" defer="defer"></script> 
+    <script src="../ueditor/third-party/codemirror/codemirror.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../ueditor/third-party/zeroclipboard/ZeroClipboard.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../ueditor/2dfire-editor.js" type="text/javascript" charset="utf-8"></script>
+     <script src="../ueditor/editor.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../js/libs/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/operateGuide.js" type="text/javascript" charset="utf-8"></script>  
+</html>

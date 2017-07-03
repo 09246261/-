@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>消息中心</title>
+		<link rel="stylesheet" type="text/css" href="../css/amazeui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+		<style type="text/css">
+			body,html{height: 100%;}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<!--Left side column-->
+			<aside class="main-sidebar">
+				<div class="sidebar-head">
+					<h2>管理后台</h2>
+					<span>luying@2dfire.com</span>
+				</div>
+				<ul class="slidebar-menu">
+					<li><a href="#startGraph.html" class="active">启动图管理</a></li>
+					<li><a href="#popManage.html" >弹窗管理</a></li>
+					<li><a href="#systemNotificy.html">系统通知管理</a></li>
+					<li><a href="#autoPush.html">自动推送模板</a></li>
+					<li><a href="#feedBack.html">意见反馈</a></li>
+					<li><a href="#versionEdit.html">版本介绍</a></li>
+				</ul>
+			</aside>
+			<iframe src="startGraph.html" scrolling="no" frameborder="0"></iframe>
+		</div>	 
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script> 
+	<script type="text/javascript"> 
+	 $('.slidebar-menu a').click(function(){
+	 	 $('.slidebar-menu a').removeClass('active');
+		 $(this).addClass('active');
+		 var url=$(this).attr('href').split('#')[1];
+		 $('iframe').attr('src',url);
+	 })
+	</script>
+</html>

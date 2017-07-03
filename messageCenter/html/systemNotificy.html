@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>系统通知管理</title> 
+		<link rel="stylesheet" type="text/css" href="../css/amazeui.min.css"/>  
+		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/model.css"/> 
+		<style type="text/css">
+		    .w-e-toolbar{position: relative;z-index: 1;}
+			.w-e-text-container{z-index: 1!important;}
+		</style>
+	</head>
+	<body class="body">
+		<div class="wrapper"> 
+			<!--content wrapper-->
+			<div class="content-wrapper">
+				<!--tab head-->
+				<div class="tabHead">
+					<a class="active">通知列表</a>
+			 	 	<a class="createMsg">新建通知</a>
+				</div>
+				<!--tab content-->
+				<div class="tabContent">
+					<!--通知列表-->
+					<div class="content" >
+						<!--查询条件-->
+						<div class="contentHead clearfix">
+							<div class="group">
+							    <span>所属模块</span> 
+							    <select class="business"></select>
+							</div> 
+							<div class="group">
+								<span>推送范围</span>
+								<select class="pushArea">
+									<option value="">请选择</option>
+								  	<option value="0">全部</option> 
+								  	<option value="1">指定区域</option>
+								  	<option value="2">特定对象</option>
+								  	
+								</select> 
+							</div>
+							<div class="group">
+								<span>状态</span>
+								<select class="state">
+								  	<option value="">全部</option> 
+								  	<option value="0">待发布</option>
+								  	<option value="1">已发布</option> 
+								</select> 
+							</div>
+							<button type="button" class="am-btn am-radius query">查询</button>
+						</div>
+						<!--数据列表-->
+						<div class="contentList">
+							<table id="dataList">
+								<thead><th>所属模块</th><th>推送范围</th><th>状态</th><th>推送时间</th><th>创建者</th><th>创建时间</th><th>操作</th></thead>
+								<tbody></tbody>
+							</table>
+							<!--分页编码-->
+				 	 	 	<div class="pageBox clearfix"> 
+				 	 	 		<div class="page clearfix">
+					 	 	 		<a id="prev"><</a> 
+									<div class="box"></div>  
+									<a id="next">></a></a>
+					 	 	 	</div>
+				 	 	 	</div> 
+						</div>
+					</div>
+					<!--新建通知-->
+					<div class="content" style="display: none;">
+						<div class="messageNotificy">
+							<!--推送设置-->
+							 <div class="pushSet">
+							 	 <div class="groupItem clearfix">
+							 	 	<div class="group ">
+							 	 		<span style="border-right: 1px solid #ADADAD;">所属模块</span> 
+							 	 		 <label class="module">
+							 	 		 	 
+							 	 		 </label>
+							 	 	</div>
+							 	 </div>
+							 	 <div class="groupItem clearfix">
+							 	 	<div class="group">
+							 	 		<span>推送时间</span>
+							 	 		<select class="pushTime"> 
+										  	<option value="1">定时推送</option>
+										  	<option value="0">立即推送</option> 
+										</select> 
+							 	 	</div>
+							 	 	<div class="group dateTime">
+							 	 		 <input type="text"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'})" class="Wdate" id='datetimepicker' placeholder="请设置日期和时间" />
+							 	 		 <!--<input  class="am-form-field" id='datetimepicker' placeholder="请设置日期和时间"> -->
+							 	 	</div>
+							 	 </div>
+							 	 <div class="groupItem clearfix">
+							 	 	<div class="group">
+							 	 		<span>推送范围</span>
+							 	 		<select class="pushRange"> 
+										  	<option value="0">全部</option>
+										  	<option value="1">指定区域</option>
+										  	<option value="2">特定对象</option> 
+										</select> 
+							 	 	</div> 
+							 	 </div>
+							 	 <div class="groupItem pushBox">
+							 	 	<img src="../img/triangle.png" />
+							 	 	<textarea placeholder="*请输入推送的店铺编码，以逗号隔开" class="shopCode"></textarea>
+							 	 	<div class="areabox clearfix">
+							 	 		<div class="area">
+							 	 			<!--<div class="areaItem">杭州<span>-</span></div>-->
+							 	 		</div>
+							 	 		<button class="areaAdd" >+</button>
+							 	 	</div>
+							 	 </div>
+							 </div>
+						    <!--推送内容-->
+						    <div class="pushContent">
+						    	<div class="groupItem">
+						    		<div class="group"  style="margin-right: 0px;">
+						    			<span>推送标题</span>
+							 	 		<input type="text" placeholder="请输入内容标题，限40个字符以内" maxlength="40" class="pushTitle"/>
+						    		</div>
+						    	</div>
+						    	<div class="groupItem">
+						    		<div class="group">
+						    			<span class="pushDes">推送简介</span>  
+						    		</div> 
+						    	    <textarea placeholder="请输入详情内容简介，此便兼容老的系统通知接口" class="pushIntro"></textarea>  
+						    	</div>
+						    	<div class="groupItem">
+						    		<div class="group">
+						    			<span class="pushDes">详情内容</span>  
+						    		</div>  
+						    	    <div id="editor"></div>
+						    	</div>
+						    </div>
+						     <!--按钮 预览 取消 保存-->
+						    <div class="btn-box">
+						    	<button type="button" class="next">下一步</button>
+						    	<button type="button" class="cancel">取消</button>
+						    	<button type="button" class="save">保存</button>
+						    </div>
+						</div>  
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<!--删除通知提示窗-->
+		<div class="am-modal am-modal-no-btn" tabindex="-1" id="delModel">
+		  <div class="am-modal-dialog delModel"> 
+		    <div class="am-modal-bd">
+		        <p>确定删除这个通知吗？</p> 
+		    </div>
+		    <div class="am-btn-group">  
+		       <button type="button" class="am-btn am-btn-default cancel" data-am-modal-close>取消</button>
+		       <button type="button" class="am-btn am-btn-secondary sure" data-am-modal-close>确定</button>
+		    </div>
+		  </div>
+		</div> 
+		<!--选择地区级联动-->
+	    <div class="am-modal am-modal-no-btn" tabindex="-1" id="district">
+		  <div class="am-modal-dialog district"> 
+		    <div class="am-modal-bd clearfix">
+		         <div class="group country">
+		         	<span>国家</span><select id="cmbCountry"></select>  
+		         </div>
+		         <div class="group province">
+		         	<span>省区</span><select id="cmbProvince"></select> 
+		         </div>
+		         <div class="group city">
+		         	<span>城市</span><select id="cmbCity" disabled></select> 
+		         </div>
+		         <div class="group dist">
+		         	<span>区县</span><select id="cmbArea" disabled></select> 
+		         </div>
+		    </div>
+		    <div class="am-btn-group">  
+		       <button type="button" class="am-btn am-btn-default" data-am-modal-close>取消</button>
+		       <button type="button" class="am-btn am-btn-secondary" data-am-modal-close id="ensure">确定</button>
+		    </div> 
+		  </div>
+		</div> 
+		<!--验证预览-->
+		<div class="am-modal am-modal-no-btn" tabindex="-1" id="verficy">
+		  <div class="am-modal-dialog verficy"> 
+		    <div class="am-modal-bd">
+		        <h2>预览验证</h2>
+		        <div class="shopCodeBox clearfix">
+		        	<input type="text" placeholder="请输入店铺编码(多个以英文逗号隔开)" class="shop_code" />
+		        	<span class="sendVerficy">发送验证</span>
+		        </div>
+		        <div class="verficyBox">
+		        	<input type="text" placeholder="请输入验证码" class="verficyCode" />
+		        </div>
+		        <div class="previewTip">
+		        	* 预览功能仅用于检查确认通知详情内容，不适用于公众传播，请输入您个人测试店铺编码
+		        </div>
+		    </div>
+		    <div class="am-btn-group">  
+		       <button type="button" class="am-btn am-btn-default" data-am-modal-close id="cancel">取消，返回编辑</button>
+		       <button type="button" class="am-btn am-btn-secondary"  id="surePreview">确定并发布</button>
+		    </div>
+		  </div>
+		</div>
+		<!--请求中，请稍后-->
+		<div class="request">
+			请求中，请稍后...
+		</div>
+	</body>
+	<script src="../js/libs/jquery.min.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../js/libs/wangEditor.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/libs/common.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../js/libs/amazeui.min.js" type="text/javascript" charset="utf-8"></script> 
+	<script src="../My97DatePicker/WdatePicker.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/systemNotificy.js" type="text/javascript" charset="utf-8"></script>  
+</html>

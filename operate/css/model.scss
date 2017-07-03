@@ -1,0 +1,318 @@
+//弹窗样式
+@import "mixin.scss";
+.modal
+{
+    z-index: 20000;
+    background: rgba(0,0,0,0.5);
+}
+.modal-backdrop
+{
+    background: transparent;
+}
+.modal-dialog
+{
+    margin-top:250px; 
+}
+#editPreview
+{
+    .modal-content
+    {
+        width: 375px;
+        height: 667px;
+        overflow-y: auto; 
+        overflow-x: hidden;
+        .modal-body
+        {
+            padding: 0;
+            line-height: 0;
+            margin: 0;
+        }
+    }
+}
+.modal-header
+{
+    position: relative;  
+    padding: 25px 0; 
+    border: none;
+    h4
+    {
+        position: absolute; 
+        top:0; 
+        line-height: 47px;
+        left:50%;
+        font-size: 20px;
+        transform: translateX(-50%);
+        border-top: 3px solid #de1833;
+    }
+    .h4
+    {
+        left: 46%;
+        margin: 0;
+        padding: 0;
+    }
+}
+.modal-body
+{
+    text-align: center;
+    padding: 10px 10px 20px;
+    font-size: 20px;
+    font-family: "宋体"; 
+    .tipMessage,.saveTip,.leaveTip
+    { 
+        line-height: 24px;
+        padding: 20px;
+        border:1px solid #E6E6E6;
+    }
+    
+    .problem,.noProblem
+     {
+         border:1px solid #E6E6E6; 
+        p
+        {
+            text-align: center;
+            line-height: 30px;
+            font-size: 16px;
+        }
+     } 
+     .uploadBtn
+     {
+         label
+         {
+             display: block;
+             width: $width;
+             height: $height;
+             line-height: 35px;
+             font-weight: normal;
+             font-size: 18px;
+         }
+     }
+     .group
+     { 
+        
+        border:1px solid #E6E6E6; 
+        height: 35px;   
+//      @include border-radius(5px);
+        font-size:14px; 
+        margin-bottom: 20px; 
+        .select2-container--default .select2-selection--single{border:none!important;outline: none;}
+        span
+        { 
+            display: inline-block;
+            height: $height;
+            padding:0 10px;
+            line-height: 35px;
+            background: #eee;
+            color: #555;
+            float: left;
+        }
+        select,input
+        {
+            border:none;
+            width: 299px;
+            height: $height;
+            line-height: 35px;
+            float: left;
+            padding-left: 5px; 
+            font-size:14px;
+            font-family: "宋体";
+        }
+        .swiper-container
+        {  
+            width: 260px;
+            display: inline-block;
+            height: $height;
+            @include border-radius(5px);
+            overflow: hidden;
+            .swiper-wrapper
+            { 
+                .swiper-slide
+                { 
+                    line-height: 33px; 
+                    padding-left: 6px;
+                    padding-right: 30px;
+                    text-align: left;
+                }
+            }
+            
+            .swiper-button-next
+            {
+                position: absolute;
+                width: 25px;
+                height: 17px;
+                right:0;
+                bottom: 0;
+                top:auto;
+                margin: 0;
+                border-left: 1px solid #E6E6E6;
+                background: #DE1833 url(../img/next.png) no-repeat center -2px;
+                background-size: contain;
+            }
+            .swiper-button-prev
+            {
+                width: 25px;
+                height: 17px;
+                right:0;
+                left: auto;
+                bottom: auto;
+                top:0;
+                margin: 0;
+                border-left: 1px solid #E6E6E6;
+                background: #DE1833 url(../img/prev.png) no-repeat center 2px;
+                background-size: contain;
+            }
+        }
+     }
+     .upload
+     {
+        width: $width;
+        border:1px solid #E6E6E6; 
+        height: 35px;  
+        margin-bottom: 20px;
+        position: relative;
+        background: #eee; 
+        @include border-radius(5px);
+        input
+        {
+            position: absolute;
+            width:$width;
+            height: $height;
+            top:0;
+            left: 0;
+            display: none;
+        }
+        label
+        {
+            font-weight: normal;
+            margin: 0;
+            width: $width;
+            height: $height;
+            line-height: 35px;
+        }
+     }
+}
+.modal-footer
+{
+    text-align: center;
+    border:none;
+    @include display-flex;
+    @include align-item;
+    @include justify-content-center;
+    button
+    {
+        width:60px;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        padding: 0;
+        background: #fff;
+        border:1px solid #d1d1d1;
+        font-family: "宋体";
+        @include border-radius(5px);
+        margin:0 10px;
+         
+    }
+    .sure,.editSure,.videoSure,.createSure,.yes,.sureLeave
+    {
+        border:none;
+        background: #D52632;
+        color: #fff; 
+    }
+}
+//锚点弹窗
+.anchor-out
+{
+    position: fixed;
+    display: none;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20000;
+    background: rgba(0,0,0,0.4);
+    .anchor-in
+    {
+        width: 340px;
+        height: 220px;
+        background: #fff;
+        @include border-radius(5px);
+        position: absolute;
+        left:50%;
+        top:50%;
+        margin-left: -170px;
+        margin-top:-110px;
+        .anchor-header
+        {
+            h4
+            {
+                width: 180px;
+                margin:0 auto;
+                padding: 10px 0;
+                font-size: 20px; 
+                text-align: center;
+                border-top: 3px solid #de1833;
+            }
+           
+        }
+        .anchor-body
+        {
+             #anchorAddress
+            {
+                width: 90%;
+                margin:0 auto;
+                height: 100px; 
+                word-wrap: break-word;
+                padding: 5px;
+                border: 1px solid #E6E6E6;
+                text-align: left;
+                line-height: 20px;
+                outline: none;
+            }
+        }
+        .anchor-footer
+        {
+            text-align: center;
+            border:none;
+            @include display-flex;
+            @include align-item;
+            @include justify-content-center;
+            margin-top:20px;
+            button
+            {
+                width:60px;
+                text-align: center;
+                height: 30px;
+                line-height: 30px;
+                padding: 0;
+                background: #fff;
+                border:1px solid #d1d1d1;
+                font-family: "宋体";
+                @include border-radius(5px);
+                margin:0 10px;
+                 
+            }
+            #sure
+            {
+                border:none;
+                background: #D52632;
+                color: #fff; 
+            }
+        }
+    }
+}
+.copySuccess
+{
+    position: fixed;
+    width: 200px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    top:50%;
+    left:50%;
+    margin-left: -100px;
+    margin-top:-20px; 
+    background: rgba(0,0,0,0.6);
+    font-size: 20px;
+    color: #fff;
+    border-radius: 6px;
+    display: none;
+}
